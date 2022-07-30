@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'screens/chat.dart';
-import 'screens/wallet_total.dart';
-import 'screens/currency_home.dart';
-
 void main() {
   runApp(const MyNewApp());
 }
