@@ -184,6 +184,9 @@ class _ChatState extends State<Chat> {
                   height: 10,
                   thickness: 3,
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                   children: [
                     CircleAvatar(
@@ -197,8 +200,8 @@ class _ChatState extends State<Chat> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(10),
-                      height: 60,
+                      padding: EdgeInsets.symmetric(horizontal: 10,),
+                      height: 40,
                       width: 250,
                       child: TextField(
                         keyboardType: TextInputType.text,
