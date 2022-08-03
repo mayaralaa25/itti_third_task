@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iti_third_task/screens/chat.dart';
 
-import '../form.dart';
+import 'form.dart';
 
 class WalletTotal extends StatelessWidget {
   const WalletTotal({Key? key}) : super(key: key);
