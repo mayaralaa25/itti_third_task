@@ -37,9 +37,10 @@ class _ChatState extends State<Chat> {
                               builder: (context) => WalletTotal()));
                     },
                     child: const Chip(
-                      label: Text('WALLET TOTAL',style: TextStyle(
-                        color: Colors.white,
-                      )),
+                      label: Text('WALLET TOTAL',
+                          style: TextStyle(
+                            color: Colors.white,
+                          )),
                       backgroundColor: Color.fromARGB(230, 32, 30, 150),
                     ),
                   ),
@@ -47,13 +48,15 @@ class _ChatState extends State<Chat> {
                     width: 20,
                   ),
                   const Chip(
-                    label: Text('CHAT',),
+                    label: Text(
+                      'CHAT',
+                    ),
                     backgroundColor: Colors.white,
                   ),
                 ],
               ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
               SingleChildScrollView(
                 child: ListView(
@@ -187,28 +190,32 @@ class _ChatState extends State<Chat> {
                   CircleAvatar(
                     backgroundColor: Color(0xff212c7c),
                     child: Center(
-                      child: Icon(
-                        Icons.expand_less,
-                        color: Colors.white,
-                        size: 30,
+                          child: Icon(
+                            Icons.expand_less,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10,),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 10,
+                      ),
                       height: 40,
                       //width: 250,
                       child: TextField(
                         keyboardType: TextInputType.text,
-                        style: TextStyle(backgroundColor: Color(0xff212c7c),),
+                        style: TextStyle(
+                          backgroundColor: Color(0xff212c7c),
+                        ),
                         decoration: InputDecoration(
-                           filled: true,
+                          filled: true,
                           fillColor: Color(0xff212c7c),
                           hintText: "Your message...",
                           hintStyle: TextStyle(color: Colors.white24),
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(Radius.circular(40)),
+                            borderRadius: BorderRadius.all(Radius.circular(40)),
                           ),
                         ),
                       ),

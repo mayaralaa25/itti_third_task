@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'form.dart';
 import 'screens/chat.dart';
 void main() {
   runApp(const MyNewApp());
@@ -13,7 +14,7 @@ class MyNewApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: Chat(),
+      home: ValidationForm(),
     );
   }
 }

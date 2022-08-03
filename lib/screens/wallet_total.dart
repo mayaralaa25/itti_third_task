@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iti_third_task/screens/chat.dart';
 
+import '../form.dart';
+
 class WalletTotal extends StatelessWidget {
   const WalletTotal({Key? key}) : super(key: key);
 
@@ -193,7 +195,16 @@ class UpperTabBarWithAdd extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        const Icon(Icons.add, size: 36, color: Colors.white)
+        GestureDetector(
+             onTap: ()
+             {
+               Navigator.push(context,
+                   MaterialPageRoute(builder: (context) => ValidationForm()));
+             },
+            child: const Icon(
+                Icons.add,
+                size: 36,
+                color: Colors.white)),
       ],
     );
   }
