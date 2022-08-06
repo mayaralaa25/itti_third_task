@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/form.dart';
+import 'package:iti_third_task/screens/form.dart';
+import 'package:iti_third_task/screens/new_form.dart';
 void main() {
   runApp(const MyNewApp());
 }
@@ -13,7 +14,7 @@ class MyNewApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: ValidationForm(),
+      home: NewForm(),
     );
   }
 }

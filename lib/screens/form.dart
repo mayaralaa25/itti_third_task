@@ -15,23 +15,28 @@ class _ValidationFormState extends State<ValidationForm> {
 
   final TextEditingController _emailTextEditingController =
       TextEditingController();
+  late String NAME;
+  late String EMAIL;
+  late String GENDER;
+  final GlobalKey<FormState> _signinformKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<FormState> _signinformKey = GlobalKey<FormState>();
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        appBar: AppBar(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(
         backgroundColor: Color.fromRGBO(5, 16, 84, 1),
         elevation: 0,
         leading: GestureDetector(
-           onTap: ()
-          {
+          onTap: () {
             Navigator.push(context,
-            MaterialPageRoute(builder: (context) => WalletTotal()));
+                MaterialPageRoute(builder: (context) => WalletTotal()));
           },
-          child: Icon(Icons.arrow_back,color: Colors.purple[900],size:
-          35,),
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 35,
+          ),
         ),
       ),
       body: Container(
@@ -67,15 +72,24 @@ class _ValidationFormState extends State<ValidationForm> {
                       keyboardType: TextInputType.text,
                       controller: _nameTextEditingController,
                       validator: (name) {
-                        //if (name == null) return null;
+                        NAME = name.toString();
+                        if (name == null) return null;
+                        if (name.isEmpty) return ('Can not be empty');
+                        return null;
                       },
                       decoration: InputDecoration(
                         label: Text('Name'),
                         labelStyle: TextStyle(color: Colors.purple[500]),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                          color: Colors.purple,
-                        )),
+                          borderSide: BorderSide(
+                            color: Colors.purple,
+                          ),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                          ),
+                        ),
                         filled: true,
                         fillColor: Colors.white,
                         prefixIcon: Icon(
@@ -95,7 +109,13 @@ class _ValidationFormState extends State<ValidationForm> {
                       keyboardType: TextInputType.text,
                       controller: _emailTextEditingController,
                       validator: (email) {
-                        //if (email == null) return null;
+                        EMAIL = email.toString();
+                        if (email == null) return null;
+                        if (email.length == 0) return ('Can not be empty');
+                        if (!email.contains("@") || !email.contains(".")) {
+                          return 'Invalid Email';
+                        }
+                        return null;
                       },
                       decoration: InputDecoration(
                         label: Text('Email'),
@@ -104,6 +124,11 @@ class _ValidationFormState extends State<ValidationForm> {
                             borderSide: BorderSide(
                           color: Colors.purple,
                         )),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                          ),
+                        ),
                         filled: true,
                         fillColor: Colors.white,
                         prefixIcon: Icon(
@@ -126,54 +151,65 @@ class _ValidationFormState extends State<ValidationForm> {
                             borderSide: BorderSide(
                           color: Colors.purple,
                         )),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.red,
+                          ),
+                        ),
                         filled: true,
                         fillColor: Colors.white,
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(style: BorderStyle.solid),
                         ),
                       ),
-                      validator: (txt) {
-                        //if (txt == null) return null;
-                      },
                       borderRadius: BorderRadius.circular(10),
                       items: [
                         DropdownMenuItem(
-                          child: Text("Male"),
+                          child: Text("Male",style: TextStyle(color: Colors.purple,)),
                           value: "male",
                         ),
                         DropdownMenuItem(
-                          child: Text("Female"),
-                          value: "famle",
+                          child: Text("Female",style: TextStyle(color: Colors.purple,)),
+                          value: "female",
                         ),
                       ],
                       onChanged: (value) {
                         print(value);
+                      },
+                      validator: (gender) {
+                        GENDER = gender.toString();
+                        if (gender != 'male' && gender != 'female')
+                          return ('Can not be empty');
+                        return null;
                       },
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     MaterialButton(
+                      height: 50,
+                      minWidth: 100,
                       onPressed: () {
-                        if (_signinformKey.currentState!.validate()) {
+                        if (_signinformKey.currentState?.validate()==true) {
                           showOkCancelAlertDialog(
                             context: context,
                             title: "Ready to submit",
                             okLabel: "OK",
                             cancelLabel: "Cancel",
+                            message:
+                                "Name: $NAME \nEmail: $EMAIL \nGender: $GENDER",
                             //isDestructiveAction: true,
                           );
                         } else
                           print('error');
                       },
-                      child: Text("Submit"),
+                      child: Text("Submit",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold)),
                       color: Colors.purple[900],
                     ),
                   ],
                 ),
               ),
             ),
-
           ],
         ),
       ),

@@ -81,3 +81,42 @@ Widget leftCustomRow({
     ],
   );
 }
+
+Widget centerCustomRow({
+  required var nameOfButton,
+  required var number,
+  double fontSize = 16,
+  FontWeight fontWeight = FontWeight.w400,
+  double buttonWidth = 250,
+  double buttonHeight = 50,
+  bool shadow = true,
+}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Padding(
+        padding: const EdgeInsets.all(10),
+        child: Container(
+          height: buttonHeight,
+          width: buttonWidth,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Color(0xff074E7D),
+              Color(0xff00A2AD),
+            ]),
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: Center(
+            child: Text(
+              number.toString()+ ". " + nameOfButton.toString(),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: fontSize,
+                  fontWeight: fontWeight),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
